@@ -6,7 +6,7 @@ using System.Threading;
 namespace Module13AutoTests.Pages
 {
 	internal class OutlookMailBox : BasePage
-    {
+	{
 		const string _emailAddress = "automationtestuser0@ya.ru";
 		const string _emailSubject = "Module13";
 

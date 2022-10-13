@@ -6,7 +6,7 @@ using System.Threading;
 namespace Module13AutoTests.Pages
 {
 	internal class YaMailBox : BasePage
-    {
+	{
 		BaseElement newMessageButton = new BaseElement(By.CssSelector("a[href='#compose']"));
 		BaseElement refreshButton = new BaseElement(By.CssSelector("button.qa-LeftColumn-SyncButton"));
 		BaseElement unreadEmailItem = new BaseElement(By.CssSelector("div.mail-MessagesList a.is-unread"));

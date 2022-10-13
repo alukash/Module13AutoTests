@@ -4,8 +4,8 @@ using OpenQA.Selenium;
 namespace Module13AutoTests.Pages
 {
 	internal class OutlookLogin : BasePage
-    {
-        const string _userName = "automationtestuser1@outlook.com";
+	{
+		const string _userName = "automationtestuser1@outlook.com";
 		const string _passw = "Autotest123";
 
 		BaseElement userNameInput = new BaseElement(By.CssSelector("input[type='email']"));
@@ -16,15 +16,15 @@ namespace Module13AutoTests.Pages
 		BaseElement wrongUserNameError = new BaseElement(By.CssSelector("#usernameError"));
 
 		public void Open()
-        {
+		{
 			driver.Navigate().GoToUrl("https://www.outlook.com");
 			WaitPageLoaded(signInButton);
 			signInButton.Click();
 			WaitPageLoaded(nextButton);
-        }
+		}
 
-        public void Login()
-        {
+		public void Login()
+		{
 			userNameInput.SendKeys(_userName);
 			nextButton.Click();
 			passwdInput.SendKeys(_passw);

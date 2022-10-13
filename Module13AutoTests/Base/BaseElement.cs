@@ -7,127 +7,127 @@ using System.Drawing;
 
 namespace Module13AutoTests.Base
 {
-    internal class BaseElement : IWebElement
-    {
-        IWebDriver _driver = Driver.GetDriver();
-        int _defaultTimeout = 10;
-        By _locator;
+	internal class BaseElement : IWebElement
+	{
+		IWebDriver _driver = Driver.GetDriver();
+		int _defaultTimeout = 10;
+		By _locator;
 
-        public BaseElement(By locator)
-        {
-            _locator = locator;
-        }
+		public BaseElement(By locator)
+		{
+			_locator = locator;
+		}
 
-        public IWebElement WaitUntilDisplayed()
-        {
-            return WaitUntilDisplayed(_defaultTimeout);
-        }
+		public IWebElement WaitUntilDisplayed()
+		{
+			return WaitUntilDisplayed(_defaultTimeout);
+		}
 
-        public IWebElement WaitUntilDisplayed(int timeout)
-        {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
-            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
-            wait.Until(condition =>
-            {
-                return _driver.FindElement(_locator).Displayed;
-            });
-            return _driver.FindElement(_locator);
-        }
+		public IWebElement WaitUntilDisplayed(int timeout)
+		{
+			WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
+			wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+			wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+			wait.Until(condition =>
+			{
+				return _driver.FindElement(_locator).Displayed;
+			});
+			return _driver.FindElement(_locator);
+		}
 
-        public void WaitUntilNotDisplayed()
-        {
-            int timeout = 5;
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
-            wait.Until(condition =>
-            {
-                try
-                {
-                    return !_driver.FindElement(_locator).Displayed;
-                }
-                catch (Exception e)
-                {
-                    return true;
-                }
-            });
-        }
+		public void WaitUntilNotDisplayed()
+		{
+			int timeout = 5;
+			WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
+			wait.Until(condition =>
+			{
+				try
+				{
+					return !_driver.FindElement(_locator).Displayed;
+				}
+				catch (Exception e)
+				{
+					return true;
+				}
+			});
+		}
 
-        public bool IsDisplayed()
-        {
-            IList<IWebElement> elements = _driver.FindElements(_locator);
-            if (elements.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return elements[0].Displayed;
-            }
-        }
+		public bool IsDisplayed()
+		{
+			IList<IWebElement> elements = _driver.FindElements(_locator);
+			if (elements.Count == 0)
+			{
+				return false;
+			}
+			else
+			{
+				return elements[0].Displayed;
+			}
+		}
 
-        public string GetText()
-        {
-            return WaitUntilDisplayed().Text;
-        }
+		public string GetText()
+		{
+			return WaitUntilDisplayed().Text;
+		}
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
+		public void Clear()
+		{
+			throw new NotImplementedException();
+		}
 
-        public void Click()
-        {
-            WaitUntilDisplayed().Click();
-        }
+		public void Click()
+		{
+			WaitUntilDisplayed().Click();
+		}
 
-        public IWebElement FindElement(By by)
-        {
+		public IWebElement FindElement(By by)
+		{
 
-            return _driver.FindElement(by);
-        }
+			return _driver.FindElement(by);
+		}
 
-        public ReadOnlyCollection<IWebElement> FindElements(By by)
-        {
-            return _driver.FindElements(by); ;
-        }
+		public ReadOnlyCollection<IWebElement> FindElements(By by)
+		{
+			return _driver.FindElements(by); ;
+		}
 
-        public string GetAttribute(string attributeName)
-        {
-            throw new NotImplementedException();
-        }
+		public string GetAttribute(string attributeName)
+		{
+			throw new NotImplementedException();
+		}
 
-        public string GetCssValue(string propertyName)
-        {
-            throw new NotImplementedException();
-        }
+		public string GetCssValue(string propertyName)
+		{
+			throw new NotImplementedException();
+		}
 
-        public string GetProperty(string propertyName)
-        {
-            throw new NotImplementedException();
-        }
+		public string GetProperty(string propertyName)
+		{
+			throw new NotImplementedException();
+		}
 
-        public void SendKeys(string text)
-        {
-            WaitUntilDisplayed().SendKeys(text);
-        }
+		public void SendKeys(string text)
+		{
+			WaitUntilDisplayed().SendKeys(text);
+		}
 
-        public void Submit()
-        {
-            throw new NotImplementedException();
-        }
+		public void Submit()
+		{
+			throw new NotImplementedException();
+		}
 
-        public string TagName { get; }
+		public string TagName { get; }
 
-        public string Text { get; }
+		public string Text { get; }
 
-        public bool Enabled { get; }
+		public bool Enabled { get; }
 
-        public bool Selected { get; }
+		public bool Selected { get; }
 
-        public Point Location { get; }
+		public Point Location { get; }
 
-        public Size Size { get; }
+		public Size Size { get; }
 
-        public bool Displayed { get; }
-    }
+		public bool Displayed { get; }
+	}
 }
