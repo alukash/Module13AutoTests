@@ -66,8 +66,5 @@ namespace Module13AutoTests.Pages
 		{
 			return newMessageButton.IsDisplayed();
 		}
-
-
-
 	}
 }

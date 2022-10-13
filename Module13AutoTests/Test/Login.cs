@@ -27,7 +27,8 @@ namespace Module13AutoTests.Test
 			outlookLoginPage.ClickNoButton();
 			OutlookMailBox outlookMailBoxPage = new OutlookMailBox();
 			outlookMailBoxPage.WaitPageLoaded();
-			Assert.IsTrue(outlookMailBoxPage.IsNewMessageButtonDisplayed(), "Failed to login - New Message button is not displayed");
+			Assert.IsTrue(outlookMailBoxPage.IsNewMessageButtonDisplayed(),
+				"Failed to login - New Message button is not displayed");
 		}
 
 		[Test]
@@ -40,8 +41,10 @@ namespace Module13AutoTests.Test
 			outlookLoginPage.Open();
 			outlookLoginPage.EnterUserName(userName);
 			outlookLoginPage.ClickNextButton();
-			Assert.IsTrue(outlookLoginPage.IsWrongUserNameErrorDisplayed(), "Error message is not displayed");
-			Assert.AreEqual(expectedError, outlookLoginPage.getWrongUserNameErrorText(), "Error message is not correct");
+			Assert.IsTrue(outlookLoginPage.IsWrongUserNameErrorDisplayed(), 
+				"Error message is not displayed");
+			Assert.AreEqual(expectedError, outlookLoginPage.getWrongUserNameErrorText(), 
+				"Error message is not correct");
 		}
 
 		[Test]
@@ -54,8 +57,10 @@ namespace Module13AutoTests.Test
 			outlookLoginPage.Open();
 			outlookLoginPage.EnterUserName(userName);
 			outlookLoginPage.ClickNextButton();
-			Assert.IsTrue(outlookLoginPage.IsWrongUserNameErrorDisplayed(), "Error message is not displayed");
-			Assert.AreEqual(expectedError, outlookLoginPage.getWrongUserNameErrorText(), "Error message is not correct");
+			Assert.IsTrue(outlookLoginPage.IsWrongUserNameErrorDisplayed(), 
+				"Error message is not displayed");
+			Assert.AreEqual(expectedError, outlookLoginPage.getWrongUserNameErrorText(), 
+				"Error message is not correct");
 		}
 
 		[TearDown]
