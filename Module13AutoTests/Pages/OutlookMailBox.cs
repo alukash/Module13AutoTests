@@ -1,5 +1,7 @@
 ﻿using Module13AutoTests.Base;
 using OpenQA.Selenium;
+using Polly;
+using Polly.Retry;
 using System;
 using System.Threading;
 
@@ -30,18 +32,32 @@ namespace Module13AutoTests.Pages
 			sendButton.Click();
 		}
 
+		//internal void WaitForEmail()
+		//{
+		//	int timeout = 5000;
+		//	for (int i = 0; i < 10; i++)
+		//	{
+		//		if (unreadEmailItem.IsDisplayed())
+		//		{
+		//			return;
+		//		}
+		//		Thread.Sleep(timeout);
+		//	}
+		//	throw new ApplicationException("No email received");
+		//}
+
 		internal void WaitForEmail()
 		{
-			int timeout = 5000;
-			for (int i = 0; i < 10; i++)
-			{
-				if (unreadEmailItem.IsDisplayed())
+			Policy
+				.Handle<ApplicationException>()
+				.WaitAndRetry(retryCount: 10, sleepDuration => TimeSpan.FromSeconds(5))
+				.Execute(() =>
 				{
-					return;
-				}
-				Thread.Sleep(timeout);
-			}
-			throw new ApplicationException("No email received");
+					if (!unreadEmailItem.IsDisplayed())
+					{
+						throw new ApplicationException("No email received");
+					}
+				});
 		}
 
 		internal void OpenUnreadEmail()
