@@ -5,23 +5,20 @@ namespace Module13AutoTests.Pages
 {
 	internal class YaLogin : BasePage
 	{
-		const string _userName = "automationtestuser0@ya.ru";
-		const string _passw = "Autotest123";
-
 		BaseElement userNameInput = new BaseElement(By.Id("passp-field-login"));
 		BaseElement passwInput = new BaseElement(By.Id("passp-field-passwd"));
 		BaseElement loginButton = new BaseElement(By.CssSelector("[id='passp:sign-in']"));
 
-		public void waitPageLoaded()
+		public void WaitPageLoaded()
 		{
 			WaitPageLoaded(loginButton);
 		}
 
-		public void Login()
+		public void Login(string userName, string passwd)
 		{
-			userNameInput.SendKeys(_userName);
+			userNameInput.SendKeys(userName);
 			loginButton.Click();
-			passwInput.SendKeys(_passw);
+			passwInput.SendKeys(passwd);
 			loginButton.Click();
 		}
 	}

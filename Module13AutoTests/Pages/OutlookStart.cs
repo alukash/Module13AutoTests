@@ -3,16 +3,16 @@ using OpenQA.Selenium;
 
 namespace Module13AutoTests.Pages
 {
-	internal class YaHome : BasePage
+	internal class OutlookStart : BasePage
 	{
-		BaseElement signInButton = new BaseElement(By.CssSelector("div.PSHeader-Right button"));
+		BaseElement signInButton = new BaseElement(By.LinkText("Sign in"));
 
 		public void WaitPageLoaded()
 		{
 			WaitPageLoaded(signInButton);
 		}
 
-		public void ClickSignInButton()
+		public void ClickSignInButtonButton()
 		{
 			signInButton.Click();
 		}

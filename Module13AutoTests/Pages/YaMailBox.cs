@@ -55,11 +55,15 @@ namespace Module13AutoTests.Pages
 			replyButton.Click();
 		}
 
-		public bool SendEmail()
+		public void SendEmail()
 		{
 			sendButton.Click();
 			sendButton.WaitUntilNotDisplayed();
-			return !sendButton.IsDisplayed();
+		}
+
+		public bool IsSendButtonDisplayed()
+		{
+			return sendButton.IsDisplayed();
 		}
 	}
 }

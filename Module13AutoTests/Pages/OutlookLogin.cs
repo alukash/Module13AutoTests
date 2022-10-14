@@ -5,29 +5,22 @@ namespace Module13AutoTests.Pages
 {
 	internal class OutlookLogin : BasePage
 	{
-		const string _userName = "automationtestuser1@outlook.com";
-		const string _passw = "Autotest123";
-
 		BaseElement userNameInput = new BaseElement(By.CssSelector("input[type='email']"));
 		BaseElement passwdInput = new BaseElement(By.CssSelector("input[type='password']"));
-		BaseElement signInButton = new BaseElement(By.LinkText("Sign in"));
 		BaseElement nextButton = new BaseElement(By.Id("idSIButton9"));
 		BaseElement noButton = new BaseElement(By.Id("idBtn_Back"));
 		BaseElement wrongUserNameError = new BaseElement(By.CssSelector("#usernameError"));
 
-		public void Open()
+		public void WaitPageLoaded()
 		{
-			driver.Navigate().GoToUrl("https://www.outlook.com");
-			WaitPageLoaded(signInButton);
-			signInButton.Click();
 			WaitPageLoaded(nextButton);
 		}
 
-		public void Login()
+		public void Login(string userName, string passwd)
 		{
-			userNameInput.SendKeys(_userName);
+			userNameInput.SendKeys(userName);
 			nextButton.Click();
-			passwdInput.SendKeys(_passw);
+			passwdInput.SendKeys(passwd);
 			nextButton.Click();
 			noButton.Click();
 		}

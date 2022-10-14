@@ -7,9 +7,6 @@ namespace Module13AutoTests.Pages
 {
 	internal class OutlookMailBox : BasePage
 	{
-		const string _emailAddress = "automationtestuser0@ya.ru";
-		const string _emailSubject = "Module13";
-
 		BaseElement newMessageButton = new BaseElement(By.CssSelector("button.root-174"));
 		BaseElement unreadEmailItem = new BaseElement(By.CssSelector("div[aria-label~='Unread']"));
 		BaseElement senderField = new BaseElement(By.CssSelector(".wide-content-host .allowTextSelection span"));
@@ -23,12 +20,12 @@ namespace Module13AutoTests.Pages
 			WaitPageLoaded(newMessageButton, 30);
 		}
 
-		public void CreateNewMessage()
+		public void CreateNewMessage(string address, string subject)
 		{
 			newMessageButton.Click();
-			toInput.SendKeys(_emailAddress);
+			toInput.SendKeys(address);
 			toInput.SendKeys(Keys.Enter);
-			subjectInput.SendKeys(_emailSubject);
+			subjectInput.SendKeys(subject);
 			toInput.SendKeys(Keys.Enter);
 			sendButton.Click();
 		}
