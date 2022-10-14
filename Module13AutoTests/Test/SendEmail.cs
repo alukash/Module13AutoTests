@@ -9,7 +9,7 @@ namespace Module13AutoTests.Test
 		[SetUp]
 		public void Setup()
 		{
-			Driver.CreateDriver().Manage().Window.Maximize();
+			BaseTest.Setup();
 		}
 
 		[Test]
@@ -39,9 +39,9 @@ namespace Module13AutoTests.Test
 		}
 
 		[TearDown]
-		public void tearDown()
+		public void TearDown()
 		{
-			Driver.GetDriver().Quit();
+			BaseTest.TearDown();
 		}
 	}
 }
