@@ -13,7 +13,7 @@ namespace Module13AutoTests.Steps
 
 		public static void OpenHomePage()
 		{
-			Thread.Sleep(5000);
+			Thread.Sleep(1000);
 			Driver.GetDriver().Navigate().GoToUrl("https://mail.yandex.ru/");
 			yaHomePage = new YaHome();
 			yaHomePage.WaitPageLoaded();
